@@ -1,0 +1,10 @@
+.logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  display: flex;
+}
+
+.header-bar {
+  display: flex;
+}

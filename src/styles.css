@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  background: #f5f7fa;
+  font-family: "Microsoft YaHei", sans-serif;
+  color: #1f1f1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.portal-layout {
+  min-height: 100vh;
+}
+
+.portal-header {
+  height: 72px;
+  background: linear-gradient(90deg, #1677ff, #4096ff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  color: white;
+}
+
+.portal-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.portal-subtitle {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.time-box {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.portal-content {
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1677ff;
+  margin-bottom: 20px;
+}
+
+.module-card {
+  border-radius: 14px !important;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  border-color: #1677ff;
+  box-shadow: 0 6px 20px rgba(22,119,255,0.15);
+}
+
+.module-card h3 {
+  color: #1f1f1f;
+  margin-bottom: 10px;
+}
+
+.module-card p {
+  color: #595959;
+}
+
+.stats-card {
+  border-radius: 14px !important;
+}
+
+.menu-title {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1677ff;
+}
+
+.ant-layout-sider {
+  background: white !important;
+}
+
+.system-count {
+  color: #999;
+  margin-left: 10px;
+  font-size: 14px;
+}
