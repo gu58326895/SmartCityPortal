@@ -1,83 +1,19 @@
 import "./cockpit.css";
 
+import ChartPanel from "../components/charts/ChartPanel";
+
 import {
     useEffect,
     useState
 } from "react";
 
 import {
+    modules,
+} from "../data/mockData";
+
+import {
     Button
 } from "antd";
-
-const modules = [
-
-    {
-        title: "科技",
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
-        buttons: [
-            {
-                name: "无人机平台",
-                url: "http://uav.xxx.com"
-            }
-        ]
-    },
-
-    {
-        title: "能源",
-        image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e",
-        buttons: [
-            {
-                name: "能源平台",
-                url: "http://energy.xxx.com"
-            }
-        ]
-    },
-
-    {
-        title: "食品配送",
-        image: "https://images.unsplash.com/photo-1506617564039-2f3b650b7010",
-        buttons: [
-            {
-                name: "观麦系统",
-                url: "http://food.xxx.com"
-            }
-        ]
-    },
-
-    {
-        title: "市政园林",
-        image: "https://images.unsplash.com/photo-1494526585095-c41746248156",
-        buttons: [
-            {
-                name: "雨水泵站",
-                url: "http://pump.xxx.com"
-            }
-        ]
-    },
-
-    {
-        title: "物业管理",
-        image: "https://images.unsplash.com/photo-1460317442991-0ec209397118",
-        buttons: [
-            {
-                name: "停车系统",
-                url: "http://parking.xxx.com"
-            }
-        ]
-    },
-
-    {
-        title: "人才招聘",
-        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216",
-        buttons: [
-            {
-                name: "人才房系统",
-                url: "http://house.xxx.com"
-            }
-        ]
-    }
-
-];
 
 export default function Cockpit() {
 
@@ -110,7 +46,14 @@ export default function Cockpit() {
 
             <div className="cockpit-header">
 
-                <div className="cockpit-title">
+                <div className="cockpit-header-left" />
+
+                <div
+                    className="cockpit-title"
+                    onClick={() => {
+                        window.location.href = "/";
+                    }}
+                >
                     智慧城市运营中心
                 </div>
 
@@ -123,9 +66,15 @@ export default function Cockpit() {
             <div className="cockpit-grid">
 
                 {
-                    modules.map((item) => (
+                    modules.filter(item => { return item.title!="综合平台"}).map((item) => (
 
                         <div className="cockpit-card">
+                            <div className="scan-line" />
+
+                            <div className="card-corner corner-tl" />
+                            <div className="card-corner corner-tr" />
+                            <div className="card-corner corner-bl" />
+                            <div className="card-corner corner-br" />
 
                             <div className="card-title">
                                 {item.title}
@@ -136,21 +85,21 @@ export default function Cockpit() {
                                 className="card-image"
                             />
 
+                            <ChartPanel type={item.chartType} />
+
                             <div className="card-buttons">
 
                                 {
-                                    item.buttons.map((btn) => (
-
+                                    item.systems.map(system => (
                                         <Button
-                                            type="primary"
                                             block
+                                            type="primary"
                                             onClick={() => {
-                                                window.open(btn.url);
+                                                window.open(system.url);
                                             }}
                                         >
-                                            {btn.name}
+                                            {system.name}
                                         </Button>
-
                                     ))
                                 }
 

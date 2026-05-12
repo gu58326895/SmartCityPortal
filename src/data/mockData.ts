@@ -1,77 +1,197 @@
-export const systems = [
+export const modules = [
+    {
+        key: "all",
 
-    {
-        category: "综合平台",
-        name: "经开区企业信息化平台",
-        company: "智慧城市运营有限公司",
-        desc: "企业OA协同办公与信息化管理平台",
-        url: "https://oa.jxsjzkj.com:8826/seeyon/main.do?method=main"
-    },
+        title: "综合平台",
 
-    {
-        category: "科技板块",
-        name: "经开政务航空服务平台",
-        company: "经智科技有限公司",
-        desc: "无人机巡检与政务航空管理平台",
-        url: "https://jkwrj.jxsjzkj.com/login?redirect=/index"
-    },
+        image: "/images/uav.jpg",
 
-    {
-        category: "物业板块",
-        name: "经安智停运营后台",
-        company: "经安物业管理有限公司",
-        desc: "停车场运营管理平台",
-        url: "https://psp.jxsjzkj.com/#/login"
-    },
+        chartType: "uav",
 
-    {
-        category: "物业板块",
-        name: "人才房管理平台",
-        company: "经安物业管理有限公司",
-        desc: "人才公寓与房源管理系统",
-        url: "https://jkrcf.jxsjzkj.com:7000/login"
-    },
-    {
-        category: "食品配送",
-        name: "观麦系统管理平台",
-        company: "经益食品配送公司",
-        desc: "食材供应链与配送平台",
-        url: "https://station.guanmai.cn/"
+        kpis: [], // 预留
+
+
+
+        systems: [
+
+            {
+                name: "经开区企业信息化平台",
+
+                company: "经智慧城市运营有限公司智科技有限公司",
+
+                desc: "企业OA协同办公与信息化管理平台巡检与政务航空管理平台",
+
+                url: "https://oa.jxsjzkj.com:8826/seeyon/main.do?method=main"
+            }
+
+        ]
     },
 
     {
-        category: "市政园林",
-        name: "雨水泵站WEB系统",
-        company: "经悦园林市政建设公司",
-        desc: "雨水泵站实时监测平台",
-        url: "https://jkbz.jxsjzkj.com:8093/uniwim/index.html"
+        key: "tech",
+
+        title: "科技板块",
+
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+
+        chartType: "uav",
+
+        systems: [
+
+            {
+                name: "经开政务航空服务平台",
+
+                company: "经智科技有限公司",
+
+                desc: "无人机巡检与政务航空管理平台",
+
+                url: "https://jkwrj.jxsjzkj.com/login?redirect=/index"
+            }
+
+        ]
     },
 
     {
-        category: "市政园林",
-        name: "城市生命线安全平台",
-        company: "经悦园林市政建设公司",
-        desc: "桥梁、隧道、道路安全监测",
-        url: "https://cwy.csyw.org.cn/login?redirect=%2Findex"
+        key: "energy",
+
+        title: "能源板块",
+
+        image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e",
+
+        chartType: "energy",
+
+        systems: [
+
+            {
+                name: "能源管控平台",
+
+                company: "经慧新能源有限公司",
+
+                desc: "能源消耗与运行监测平台",
+
+                url: "http://jkecms.jxsjzkj.com"
+            }
+
+        ]
     },
 
     {
-        category: "能源板块",
-        name: "能源管控平台",
-        company: "经慧新能源有限公司",
-        desc: "能源消耗与运行监测平台",
-        url: "http://jkecms.jxsjzkj.com"
+        key: "food",
+
+        title: "食品配送",
+
+        image: "https://images.unsplash.com/photo-1506617564039-2f3b650b7010",
+
+        chartType: "food",
+
+        systems: [
+
+            {
+                name: "观麦系统管理平台",
+
+                company: "经益食品配送公司",
+
+                desc: "食材供应链与配送平台",
+
+                url: "https://station.guanmai.cn/"
+            }
+
+        ]
     },
+
     {
-        category: "人才板块",
-        name: "外包人员管理系统",
-        company: "经英人才发展有限公司",
-        desc: "能源消耗与运行监测平台",
-        url: "http://energy.xxx.com"
+        key: "garden",
+
+        title: "市政园林",
+
+        image: "https://images.unsplash.com/photo-1494526585095-c41746248156",
+
+        chartType: "garden",
+
+        systems: [
+
+            {
+                name: "雨水泵站WEB系统",
+
+                company: "经悦园林市政建设公司",
+
+                desc: "雨水泵站实时监测平台",
+
+                url: "https://jkbz.jxsjzkj.com:8093/uniwim/index.html"
+            },
+
+            {
+                name: "城市生命线安全平台",
+
+                company: "经悦园林市政建设公司",
+
+                desc: "桥梁、隧道、道路安全监测",
+
+                url: "https://cwy.csyw.org.cn/login?redirect=%2Findex"
+            }
+
+        ]
+    },
+
+    {
+        key: "property",
+
+        title: "物业板块",
+
+        image: "https://images.unsplash.com/photo-1460317442991-0ec209397118",
+
+        chartType: "parking",
+
+        systems: [
+
+            {
+                name: "经安智停运营后台",
+
+                company: "经安物业管理有限公司",
+
+                desc: "停车场运营管理平台",
+
+                url: "https://psp.jxsjzkj.com/#/login"
+            },
+
+            {
+                name: "人才房管理平台",
+
+                company: "经安物业管理有限公司",
+
+                desc: "人才公寓与房源管理系统",
+
+                url: "https://jkrcf.jxsjzkj.com:7000/login"
+            }
+
+        ]
+    },
+
+    {
+        key: "talent",
+
+        title: "人才板块",
+
+        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216",
+
+        chartType: "hr",
+
+        systems: [
+
+            {
+                name: "外包人员管理系统",
+
+                company: "经英人才发展有限公司",
+
+                desc: "人才招聘与外包人员管理",
+
+                url: "http://energy.xxx.com"
+            }
+
+        ]
     }
 
 ];
-
 export const stats = [
 
     {

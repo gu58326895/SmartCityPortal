@@ -28,7 +28,7 @@ import StatsCard from "../components/StatsCard";
 import "./Dashboard.css";
 
 import {
-    systems,
+    modules,
     stats
 } from "../data/mockData";
 
@@ -63,13 +63,20 @@ export default function Dashboard() {
 
     }, []);
 
+    const allSystems =
+        modules.flatMap(
+            module => module.systems
+        );
+
     const filteredSystems =
         currentCategory === "全部系统"
-            ? systems
-            : systems.filter(
-                item =>
-                    item.category === currentCategory
-            );
+            ? allSystems
+            : modules
+            .find(
+                m =>
+                    m.title === currentCategory
+            )
+            ?.systems || [];
 
     return (
 
