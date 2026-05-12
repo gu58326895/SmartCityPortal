@@ -31,7 +31,6 @@ export const systems = [
         desc: "人才公寓与房源管理系统",
         url: "https://jkrcf.jxsjzkj.com:7000/login"
     },
-
     {
         category: "食品配送",
         name: "观麦系统管理平台",
@@ -61,7 +60,7 @@ export const systems = [
         name: "能源管控平台",
         company: "经慧新能源有限公司",
         desc: "能源消耗与运行监测平台",
-        url: "http://energy.xxx.com"
+        url: "http://jkecms.jxsjzkj.com"
     },
     {
         category: "人才板块",

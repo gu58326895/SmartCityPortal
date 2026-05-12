@@ -3,7 +3,8 @@ import {
     Menu,
     Row,
     Col,
-    Image
+    Image,
+    Button
 } from "antd";
 
 import {
@@ -88,6 +89,15 @@ export default function Dashboard() {
                 <div className="time-box">
                     {time}
                 </div>
+
+                <Button
+                    type="primary"
+                    onClick={() => {
+                        window.open("/cockpit");
+                    }}
+                >
+                    驾驶舱模式
+                </Button>
 
             </Header>
 
