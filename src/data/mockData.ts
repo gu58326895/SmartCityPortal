@@ -6,7 +6,7 @@ export const modules = [
 
         image: "/images/uav.jpg",
 
-        chartType: "uav",
+        charts: ["uav"],
 
         kpis: [], // 预留
 
@@ -32,9 +32,9 @@ export const modules = [
 
         title: "科技板块",
 
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+        image: "/src/public/images/uav.png",
 
-        chartType: "uav",
+        charts: ["uav"],
 
         systems: [
 
@@ -56,9 +56,9 @@ export const modules = [
 
         title: "能源板块",
 
-        image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e",
+        image: "/src/public/images/energy.gif",
 
-        chartType: "energy",
+        charts: ["energy"],
 
         systems: [
 
@@ -80,9 +80,9 @@ export const modules = [
 
         title: "食品配送",
 
-        image: "https://images.unsplash.com/photo-1506617564039-2f3b650b7010",
+        image: "/src/public/images/food.jpg",
 
-        chartType: "food",
+        charts: ["food"],
 
         systems: [
 
@@ -104,9 +104,9 @@ export const modules = [
 
         title: "市政园林",
 
-        image: "https://images.unsplash.com/photo-1494526585095-c41746248156",
+        image: "/src/public/images/garden.jpeg",
 
-        chartType: "garden",
+        charts: ["garden"],
 
         systems: [
 
@@ -138,9 +138,9 @@ export const modules = [
 
         title: "物业板块",
 
-        image: "https://images.unsplash.com/photo-1460317442991-0ec209397118",
+        image: "/src/public/images/property.png",
 
-        chartType: "parking",
+        charts: ["parking"],
 
         systems: [
 
@@ -174,7 +174,7 @@ export const modules = [
 
         image: "https://images.unsplash.com/photo-1521791136064-7986c2920216",
 
-        chartType: "hr",
+        charts: ["hr"],
 
         systems: [
 

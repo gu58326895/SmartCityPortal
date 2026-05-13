@@ -237,6 +237,11 @@ export default function ChartPanel({
             case "food":
 
                 return {
+                    title: {
+                        text: "物资消耗统计",
+                        left: "center",
+                        textStyle: { color: "#ffffff" }
+                    },
 
                     xAxis: {
 

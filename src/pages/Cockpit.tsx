@@ -85,7 +85,14 @@ export default function Cockpit() {
                                 className="card-image"
                             />
 
-                            <ChartPanel type={item.chartType} />
+                            {
+                                item.charts.map(c => (
+                                    <ChartPanel type={c}/>
+                                ))
+                            }
+
+
+
 
                             <div className="card-buttons">
 
