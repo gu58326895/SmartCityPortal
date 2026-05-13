@@ -103,7 +103,7 @@ export default function Dashboard() {
                         window.open("/cockpit");
                     }}
                 >
-                    驾驶舱模式
+                    大屏模式
                 </Button>
 
             </Header>
