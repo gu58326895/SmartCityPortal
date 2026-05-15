@@ -32,7 +32,7 @@ export const modules = [
 
         title: "科技板块",
 
-        image: "/src/public/images/uav.png",
+        image: "/public/images/uav.png",
 
         charts: ["uav"],
 
@@ -56,7 +56,7 @@ export const modules = [
 
         title: "能源板块",
 
-        image: "/src/public/images/energy.gif",
+        image: "/public/images/energy.gif",
 
         charts: ["energy"],
 
@@ -80,7 +80,7 @@ export const modules = [
 
         title: "食品配送",
 
-        image: "/src/public/images/food.jpg",
+        image: "/public/images/food.jpg",
 
         charts: ["food"],
 
@@ -104,7 +104,7 @@ export const modules = [
 
         title: "市政园林",
 
-        image: "/src/public/images/garden.jpeg",
+        image: "/public/images/garden.jpeg",
 
         charts: ["garden"],
 
@@ -138,7 +138,7 @@ export const modules = [
 
         title: "物业板块",
 
-        image: "/src/public/images/property.png",
+        image: "/public/images/property.png",
 
         charts: ["parking"],
 
