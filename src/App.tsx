@@ -5,6 +5,8 @@ import {
 
 import Dashboard from "./pages/Dashboard";
 import Cockpit from "./pages/Cockpit";
+import TicketSystem from "./pages/TicketSystem/TicketSystem";
+
 
 import "./styles.css";
 
@@ -23,6 +25,11 @@ function App() {
             path="/cockpit"
             element={<Cockpit />}
         />
+
+          <Route
+              path="/ticketSystem"
+              element={<TicketSystem />}
+          />
 
       </Routes>
 
