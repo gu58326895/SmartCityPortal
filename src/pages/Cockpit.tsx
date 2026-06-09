@@ -99,10 +99,19 @@ export default function Cockpit() {
                                 <div className="chart-swiper">
                                     <Swiper
                                         modules={[Autoplay]}
-                                        autoplay={{ delay: 3000 }}
+                                        autoplay={{
+                                            delay: 6000,
+                                            disableOnInteraction: false
+                                        }}
                                         loop
                                         spaceBetween={10}
                                         slidesPerView={1}
+                                        onSwiper={(swiper) => {
+                                            const el = swiper.el;
+
+                                            el.onmouseenter = () => swiper.autoplay.stop();
+                                            el.onmouseleave = () => swiper.autoplay.start();
+                                        }}
                                     >
                                         {item.charts.map((c, i) => (
                                             <SwiperSlide key={i}>
