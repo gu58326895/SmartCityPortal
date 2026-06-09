@@ -1,357 +1,232 @@
 import ReactECharts from "echarts-for-react";
 
-interface Props {
-
+interface ChartItem {
     type: string;
+    title: string;
 }
 
-export default function ChartPanel({
-                                       type
-                                   }: Props) {
-
-    const getOption = () => {
-
-        switch (type) {
-
-            case "energy":
-
-                return {
-
-                    grid: {
-                        left: 30,
-                        right: 20,
-                        top: 30,
-                        bottom: 30
-                    },
-
-                    xAxis: {
-
-                        type: "category",
-
-                        data: [
-                            "周一",
-                            "周二",
-                            "周三",
-                            "周四",
-                            "周五",
-                            "周六",
-                            "周日"
-                        ],
-
-                        axisLine: {
-                            lineStyle: {
-                                color: "#00d0ff"
-                            }
-                        },
-
-                        axisLabel: {
-                            color: "#ffffff"
-                        }
-                    },
-
-                    yAxis: {
-
-                        type: "value",
-
-                        axisLine: {
-                            lineStyle: {
-                                color: "#00d0ff"
-                            }
-                        },
-
-                        splitLine: {
-                            lineStyle: {
-                                color: "rgba(255,255,255,0.1)"
-                            }
-                        },
-
-                        axisLabel: {
-                            color: "#ffffff"
-                        }
-                    },
-
-                    series: [
-
-                        {
-                            data: [
-                                120,
-                                132,
-                                101,
-                                134,
-                                90,
-                                230,
-                                210
-                            ],
-
-                            type: "line",
-
-                            smooth: true,
-
-                            areaStyle: {},
-
-                            lineStyle: {
-                                width: 4,
-                                color: "#00d0ff"
-                            }
-                        }
-                    ]
-                };
-
-            case "uav":
-
-                return {
-
-                    tooltip: {},
-
-                    xAxis: {
-
-                        type: "category",
-
-                        data: [
-                            "一",
-                            "二",
-                            "三",
-                            "四",
-                            "五",
-                            "六",
-                            "日"
-                        ],
-
-                        axisLabel: {
-                            color: "#fff"
-                        }
-                    },
-
-                    yAxis: {
-
-                        type: "value",
-
-                        axisLabel: {
-                            color: "#fff"
-                        },
-
-                        splitLine: {
-                            lineStyle: {
-                                color: "rgba(255,255,255,0.1)"
-                            }
-                        }
-                    },
-
-                    series: [
-
-                        {
-                            data: [
-                                12,
-                                18,
-                                15,
-                                22,
-                                30,
-                                26,
-                                19
-                            ],
-
-                            type: "bar",
-
-                            itemStyle: {
-                                color: "#00d0ff"
-                            }
-                        }
-                    ]
-                };
-
-            case "parking":
-
-                return {
-
-                    tooltip: {},
-
-                    series: [
-
-                        {
-                            type: "pie",
-
-                            radius: ["50%", "75%"],
-
-                            data: [
-
-                                {
-                                    value: 335,
-                                    name: "空闲车位"
-                                },
-
-                                {
-                                    value: 679,
-                                    name: "已使用"
-                                }
-                            ],
-
-                            label: {
-                                color: "#fff"
-                            }
-                        }
-                    ]
-                };
-
-            case "garden":
-
-                return {
-
-                    radar: {
-
-                        indicator: [
-
-                            { name: "绿化" },
-                            { name: "养护" },
-                            { name: "安全" },
-                            { name: "泵站" },
-                            { name: "道路" }
-
-                        ],
-
-                        axisName: {
-                            color: "#fff"
-                        }
-                    },
-
-                    series: [
-
-                        {
-                            type: "radar",
-
-                            data: [
-
-                                {
-                                    value: [
-                                        90,
-                                        82,
-                                        88,
-                                        95,
-                                        76
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                };
-
-            case "food":
-
-                return {
-                    title: {
-                        text: "物资消耗统计",
-                        left: "center",
-                        textStyle: { color: "#ffffff" }
-                    },
-
-                    xAxis: {
-
-                        type: "category",
-
-                        data: [
-                            "蔬菜",
-                            "肉类",
-                            "水果",
-                            "粮油"
-                        ],
-
-                        axisLabel: {
-                            color: "#fff"
-                        }
-                    },
-
-                    yAxis: {
-
-                        type: "value",
-
-                        axisLabel: {
-                            color: "#fff"
-                        }
-                    },
-
-                    series: [
-
-                        {
-                            type: "bar",
-
-                            data: [
-                                320,
-                                240,
-                                180,
-                                260
-                            ],
-
-                            itemStyle: {
-                                color: "#00d0ff"
-                            }
-                        }
-                    ]
-                };
-
-            case "hr":
-
-                return {
-
-                    xAxis: {
-
-                        type: "category",
-
-                        data: [
-                            "前端",
-                            "后端",
-                            "运维",
-                            "AI"
-                        ],
-
-                        axisLabel: {
-                            color: "#fff"
-                        }
-                    },
-
-                    yAxis: {
-
-                        type: "value",
-
-                        axisLabel: {
-                            color: "#fff"
-                        }
-                    },
-
-                    series: [
-
-                        {
-                            type: "line",
-
-                            smooth: true,
-
-                            data: [
-                                12,
-                                20,
-                                15,
-                                8
-                            ],
-
-                            lineStyle: {
-                                color: "#00d0ff",
-                                width: 4
-                            }
-                        }
-                    ]
-                };
-
-            default:
-
-                return {};
+export default function ChartPanel({ chart }: { chart: ChartItem }) {
+
+    const optionMap: Record<string, any>  = {
+
+        // ================= 科技 =================
+        uav_time: {
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            xAxis: {
+                type: "category",
+                data: ["1月","2月","3月","4月","5月","6月"],
+                axisLabel: { color: "#fff" }
+            },
+            yAxis: { axisLabel: { color: "#fff" } },
+            series: [{
+                type: "bar",
+                data: [3921, 729, 3274, 1571, 607, 273],
+                itemStyle: { color: "#00d0ff" }
+            }]
+        },
+
+        uav_km: {
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            xAxis: {
+                type: "category",
+                data: ["1月","2月","3月","4月","5月","6月"],
+                axisLabel: { color: "#fff" }
+            },
+            yAxis: { axisLabel: { color: "#fff" } },
+            series: [{
+                type: "bar",
+                data: [209.16, 248.49, 1570.21, 688, 195.09, 85.9],
+                itemStyle: { color: "#00ffcc" }
+            }]
+        },
+
+        cloud_server: {
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            tooltip: { trigger: "item" },
+            series: [{
+                type: "pie",
+                radius: "65%",
+                data: [
+                    { value: 16, name: "金蝶财务" },
+                    { value: 24, name: "OA系统" },
+                    { value: 32, name: "雨水泵站" },
+                    { value: 8, name: "会议系统" },
+                    { value: 64, name: "控股OA" },
+                    { value: 32, name: "能源平台" }
+                ],
+                label: { color: "#fff" ,  formatter: "{b}: {c}"}
+            }]
+        },
+
+        // ================= 能源 =================
+        energy_structure: {
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            tooltip: { trigger: "item" },
+            series: [{
+                type: "pie",
+                radius: "70%",
+                data: [
+                    { value: 350, name: "快充枪" },
+                    { value: 286, name: "慢充枪" },
+                    { value: 22, name: "储能设备" }
+                ],
+                label: { color: "#fff",     formatter: "{b}: {c}" }
+            }]
+        },
+
+        pv_power: {
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            xAxis: {
+                type: "category",
+                data: Array.from({ length: 12 }, (_, i) => `${i+1}月`),
+                axisLabel: { color: "#fff" }
+            },
+            yAxis: { axisLabel: { color: "#fff" } },
+            series: [{
+                type: "line",
+                smooth: true,
+                data: [896043,895764,972021,1023577,837071,1046993,1255686,1263411,950503,876928,932622,843817]
+            }]
+        },
+
+        // ================= 人才 =================
+        talent_kpi: {
+            tooltip: {},
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            xAxis: {
+                type: "category",
+                data: ["企业", "岗位", "求职者", "培训场次"],
+                axisLabel: { color: "#fff" }
+            },
+            yAxis: {},
+            series: [{
+                type: "bar",
+                data: [600, 4000, 11000, 120],
+                itemStyle: { color: "#00d0ff" }
+            }]
+        },
+
+        // ================= 园林 =================
+        garden_kpi: {
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            xAxis: {
+                type: "category",
+                data: ["绿地面积(万㎡)", "游园人数", "活动次数", "参与人数"],
+                axisLabel: { color: "#fff" }
+            },
+            yAxis: {},
+            series: [{
+                type: "bar",
+                data: [550, 31, 160, 106],
+                itemStyle: { color: "#00ffcc" }
+            }]
+        },
+
+        // ================= 物业 =================
+        parking_area: {
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            series: [{
+                type: "pie",
+                radius: "70%",
+                data: [
+                    { name: "城南", value: 1027 },
+                    { name: "塘汇", value: 381 },
+                    { name: "长水", value: 213 },
+                    { name: "嘉北", value: 246 }
+                ],
+                label: { color: "#fff",     formatter: "{b}: {c}" }
+            }]
+        },
+
+        apartment_rate: {
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            series: [{
+                type: "bar",
+                data: [100, 100, 98, 100, 71, 5],
+                itemStyle: { color: "#00d0ff" }
+            }]
+        },
+
+        property_kpi: {
+            grid: {
+                left: 30,
+                right: 20,
+                top: 30,
+                bottom: 30,
+                containLabel: true
+            },
+            xAxis: {
+                type: "category",
+                data: ["楼宇", "面积(万㎡)", "公园", "停车场"],
+                axisLabel: { color: "#fff" }
+            },
+            yAxis: {},
+            series: [{
+                type: "bar",
+                data: [14, 133, 3, 27],
+                itemStyle: { color: "#00ffcc" }
+            }]
         }
     };
 
     return (
-
         <ReactECharts
-            option={getOption()}
-            style={{
-                height: "240px",
-                width: "100%"
-            }}
+            option={optionMap[chart.type] || {}}
+            style={{ height: "240px", width: "100%" }}
         />
     );
 }

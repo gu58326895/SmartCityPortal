@@ -2,6 +2,9 @@ import "./cockpit.css";
 
 import ChartPanel from "../components/charts/ChartPanel";
 
+
+import { Autoplay } from "swiper/modules";
+
 import {
     useEffect,
     useState
@@ -11,9 +14,9 @@ import {
     modules,
 } from "../data/mockData";
 
-import {
-    Button
-} from "antd";
+import "swiper/css";
+
+import {Swiper, SwiperSlide} from "swiper/react";
 
 export default function Cockpit() {
 
@@ -42,11 +45,11 @@ export default function Cockpit() {
 
         <div className="cockpit-container">
 
-            <div className="cockpit-bg" />
+            <div className="cockpit-bg"/>
 
             <div className="cockpit-header">
 
-                <div className="cockpit-header-left" />
+                <div className="cockpit-header-left"/>
 
                 <div
                     className="cockpit-title"
@@ -66,18 +69,25 @@ export default function Cockpit() {
             <div className="cockpit-grid">
 
                 {
-                    modules.filter(item => { return item.title!="综合平台"}).map((item) => (
+                    modules.filter(item => {
+                        return item.title != "综合平台"
+                    }).map((item) => (
 
                         <div className="cockpit-card">
-                            <div className="scan-line" />
+                            <div className="scan-line"/>
 
-                            <div className="card-corner corner-tl" />
-                            <div className="card-corner corner-tr" />
-                            <div className="card-corner corner-bl" />
-                            <div className="card-corner corner-br" />
+                            <div className="card-corner corner-tl"/>
+                            <div className="card-corner corner-tr"/>
+                            <div className="card-corner corner-bl"/>
+                            <div className="card-corner corner-br"/>
 
                             <div className="card-title">
-                                {item.title}
+                                <img
+                                    src={item.logo}
+                                    className="card-logo"
+                                    alt="logo"
+                                />
+                                <span>{item.title}</span>
                             </div>
 
                             <img
@@ -85,32 +95,41 @@ export default function Cockpit() {
                                 className="card-image"
                             />
 
-                            {
-                                item.charts.map(c => (
-                                    <ChartPanel type={c}/>
-                                ))
-                            }
+                            {item.charts && item.charts.length > 0 && (
+                                <div className="chart-swiper">
+                                    <Swiper
+                                        modules={[Autoplay]}
+                                        autoplay={{ delay: 3000 }}
+                                        loop
+                                        spaceBetween={10}
+                                        slidesPerView={1}
+                                    >
+                                        {item.charts.map((c, i) => (
+                                            <SwiperSlide key={i}>
+                                                <ChartPanel chart={c} />
+                                            </SwiperSlide>
+                                        ))}
+                                    </Swiper>
+                                </div>
+                            )}
 
+                            {/*<div className="card-buttons">*/}
 
+                            {/*    {*/}
+                            {/*        item.systems.map(system => (*/}
+                            {/*            <Button*/}
+                            {/*                block*/}
+                            {/*                type="primary"*/}
+                            {/*                onClick={() => {*/}
+                            {/*                    window.open(system.url);*/}
+                            {/*                }}*/}
+                            {/*            >*/}
+                            {/*                {system.name}*/}
+                            {/*            </Button>*/}
+                            {/*        ))*/}
+                            {/*    }*/}
 
-
-                            <div className="card-buttons">
-
-                                {
-                                    item.systems.map(system => (
-                                        <Button
-                                            block
-                                            type="primary"
-                                            onClick={() => {
-                                                window.open(system.url);
-                                            }}
-                                        >
-                                            {system.name}
-                                        </Button>
-                                    ))
-                                }
-
-                            </div>
+                            {/*</div>*/}
 
                         </div>
 

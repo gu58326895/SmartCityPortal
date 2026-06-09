@@ -1,3 +1,4 @@
+
 export const modules = [
     {
         key: "all",
@@ -6,11 +7,9 @@ export const modules = [
 
         image: "/images/uav.jpg",
 
-        charts: ["uav"],
+        logo: "/logo/test.png",
 
         kpis: [], // 预留
-
-
 
         systems: [
 
@@ -32,9 +31,15 @@ export const modules = [
 
         title: "科技板块",
 
+        logo: "/logo/logo_嘉兴市经智科技有限公司.png",
+
         image: "/public/images/uav.png",
 
-        charts: ["uav"],
+        charts: [
+            { type: "uav_time", title: "无人机飞行时长（min）" },
+            { type: "uav_km", title: "无人机飞行里程（km）" },
+            { type: "cloud_server", title: "国资云服务器资源分布" }
+        ],
 
         systems: [
 
@@ -56,9 +61,14 @@ export const modules = [
 
         title: "能源板块",
 
+        logo: "/logo/logo_经慧新能源有限公司.png",
+
         image: "/public/images/energy.gif",
 
-        charts: ["energy"],
+        charts: [
+            { type: "energy_structure", title: "能源结构分布" },
+            { type: "pv_power", title: "光伏发电量趋势" }
+        ],
 
         systems: [
 
@@ -80,9 +90,11 @@ export const modules = [
 
         title: "食品配送",
 
+        logo: "/logo/食材公司.png",
+
         image: "/public/images/food.jpg",
 
-        charts: ["food"],
+        charts: [],
 
         systems: [
 
@@ -102,11 +114,15 @@ export const modules = [
     {
         key: "garden",
 
-        title: "市政园林",
+        title: "园林市政",
+
+        logo: "/logo/logo_经悦园林市政建设.png",
 
         image: "/public/images/garden.jpeg",
 
-        charts: ["garden"],
+        charts: [
+            { type: "garden_kpi", title: "园林运营指标" }
+        ],
 
         systems: [
 
@@ -138,9 +154,15 @@ export const modules = [
 
         title: "物业板块",
 
+        logo: "/logo/logo_经安物业管理有限公司.png",
+
         image: "/public/images/property.png",
 
-        charts: ["parking"],
+        charts: [
+            { type: "parking_area", title: "停车场分布" },
+            { type: "apartment_rate", title: "人才公寓入住率" },
+            { type: "property_kpi", title: "物业运营规模" }
+        ],
 
         systems: [
 
@@ -172,9 +194,13 @@ export const modules = [
 
         title: "人才板块",
 
-        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216",
+        logo: "/logo/logo_经英人才发展服务.png",
 
-        charts: ["hr"],
+        image: "/public/images/talent.jpeg",
+
+        charts: [
+            { type: "talent_kpi", title: "人才招聘核心指标" }
+        ],
 
         systems: [
 

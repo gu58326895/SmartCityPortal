@@ -149,9 +149,9 @@ export default function Dashboard() {
                                 label: "能源板块"
                             },
                             {
-                                key: "市政园林",
+                                key: "园林市政",
                                 icon: <EnvironmentOutlined />,
-                                label: "市政园林"
+                                label: "园林市政"
                             },
                             {
                                 key: "食品配送",
