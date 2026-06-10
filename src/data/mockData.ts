@@ -35,10 +35,10 @@ export const modules = [
 
         image: "/public/images/uav.png",
 
-        charts: [
-            { type: "uav_time", title: "无人机飞行时长（min）" },
-            { type: "uav_km", title: "无人机飞行里程（km）" },
-            { type: "cloud_server", title: "国资云服务器资源分布" }
+        charts:[
+            { type:"uav_time", title:"无人机月度飞行时长统计" },
+            { type:"uav_distance", title:"无人机月度飞行里程统计" },
+            { type:"cloud_cpu", title:"国资云资源分布" }
         ],
 
         systems: [
@@ -65,9 +65,10 @@ export const modules = [
 
         image: "/public/images/energy.gif",
 
-        charts: [
-            { type: "energy_structure", title: "能源结构分布" },
-            { type: "pv_power", title: "光伏发电量趋势" }
+        charts:[
+            { type:"energy_gun" },
+            { type:"energy_pv" },
+            { type:"energy_asset" }
         ],
 
         systems: [
@@ -94,7 +95,11 @@ export const modules = [
 
         image: "/public/images/food.jpg",
 
-        charts: [],
+        charts:[
+            { type:"food_sale" },
+            { type:"food_check_count" },
+            { type:"food_pass_rate" }
+        ],
 
         systems: [
 
@@ -120,8 +125,9 @@ export const modules = [
 
         image: "/public/images/garden.jpeg",
 
-        charts: [
-            { type: "garden_kpi", title: "园林运营指标" }
+        charts:[
+            { type:"garden_result" },
+            { type:"garden_activity" }
         ],
 
         systems: [
@@ -158,10 +164,10 @@ export const modules = [
 
         image: "/public/images/property.png",
 
-        charts: [
-            { type: "parking_area", title: "停车场分布" },
-            { type: "apartment_rate", title: "人才公寓入住率" },
-            { type: "property_kpi", title: "物业运营规模" }
+        charts:[
+            { type:"parking_region" },
+            { type:"apartment_rate" },
+            { type:"property_resource" }
         ],
 
         systems: [
@@ -198,8 +204,9 @@ export const modules = [
 
         image: "/public/images/talent.jpeg",
 
-        charts: [
-            { type: "talent_kpi", title: "人才招聘核心指标" }
+        charts:[
+            { type:"talent_result" },
+            { type:"talent_funnel" }
         ],
 
         systems: [
