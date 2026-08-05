@@ -26,7 +26,7 @@ export default function ChartPanel({
     return (
         <ReactECharts
             option={option}
-            style={{ height: "100%", width: "100%" }}
+            style={{ height: "360px", width: "100%" }}
         />
     );
 }
