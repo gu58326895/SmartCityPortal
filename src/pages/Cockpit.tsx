@@ -85,7 +85,6 @@ export default function Cockpit() {
                     }).map((item) => (
 
                         <div className="cockpit-card" key={item.key}>
-                            <div className="scan-line"/>
 
                             <div className="card-corner corner-tl"/>
                             <div className="card-corner corner-tr"/>
