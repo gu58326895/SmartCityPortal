@@ -11,8 +11,9 @@ import {
 } from "react";
 
 import {
-    modules,
-} from "../data/mockData";
+    getPortalOverview
+} from "../api/portalApi";
+import type { PortalModule } from "../api/portalApi";
 
 import "swiper/css";
 
@@ -21,6 +22,8 @@ import {Swiper, SwiperSlide} from "swiper/react";
 export default function Cockpit() {
 
     const [time, setTime] = useState("");
+
+    const [modules, setModules] = useState<PortalModule[]>([]);
 
     useEffect(() => {
 
@@ -38,6 +41,14 @@ export default function Cockpit() {
             setInterval(updateTime, 1000);
 
         return () => clearInterval(timer);
+
+    }, []);
+
+    useEffect(() => {
+
+        getPortalOverview()
+            .then((overview) => setModules(overview.modules))
+            .catch(() => undefined);
 
     }, []);
 
@@ -73,7 +84,7 @@ export default function Cockpit() {
                         return item.title != "综合平台"
                     }).map((item) => (
 
-                        <div className="cockpit-card">
+                        <div className="cockpit-card" key={item.key}>
                             <div className="scan-line"/>
 
                             <div className="card-corner corner-tl"/>

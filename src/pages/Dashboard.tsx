@@ -26,11 +26,13 @@ import {
 import ModuleCard from "../components/ModuleCard";
 import StatsCard from "../components/StatsCard";
 import "./Dashboard.css";
-
 import {
-    modules,
-    stats
-} from "../data/mockData";
+    getPortalOverview
+} from "../api/portalApi";
+import type {
+    PortalModule,
+    PortalStat
+} from "../api/portalApi";
 
 const {
     Header,
@@ -44,6 +46,10 @@ export default function Dashboard() {
 
     const [currentCategory, setCurrentCategory] =
         useState("全部系统");
+
+    const [modules, setModules] = useState<PortalModule[]>([]);
+
+    const [stats, setStats] = useState<PortalStat[]>([]);
 
     useEffect(() => {
 
@@ -60,6 +66,17 @@ export default function Dashboard() {
         const timer = setInterval(updateTime, 1000);
 
         return () => clearInterval(timer);
+
+    }, []);
+
+    useEffect(() => {
+
+        getPortalOverview()
+            .then((overview) => {
+                setModules(overview.modules);
+                setStats(overview.stats);
+            })
+            .catch(() => undefined);
 
     }, []);
 
@@ -183,7 +200,7 @@ export default function Dashboard() {
                                     {
                                         stats.map((item) => (
 
-                                            <Col span={6}>
+                                            <Col span={6} key={item.title}>
 
                                                 <StatsCard
                                                     title={item.title}
@@ -221,7 +238,7 @@ export default function Dashboard() {
                         {
                             filteredSystems.map((item) => (
 
-                                <Col span={6}>
+                                <Col span={6} key={item.name}>
 
                                     <ModuleCard item={item} />
 

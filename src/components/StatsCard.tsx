@@ -2,7 +2,7 @@ import { Card, Statistic } from "antd";
 
 interface Props {
     title: string;
-    value: any;
+    value: number;
 }
 
 export default function StatsCard({

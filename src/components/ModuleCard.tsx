@@ -1,7 +1,8 @@
 import { Card, Tag, Tooltip } from "antd";
+import type { PortalSystem } from "../api/portalApi";
 
 interface Props {
-    item: any;
+    item: PortalSystem;
 }
 
 export default function ModuleCard({ item }: Props) {

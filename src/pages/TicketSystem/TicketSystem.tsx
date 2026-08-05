@@ -1,6 +1,6 @@
 // TicketSystem.tsx
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
     Button,
     Card,
@@ -26,68 +26,16 @@ import {
 } from '@ant-design/icons';
 
 import './TicketSystem.css';
+import {
+    completeTicket,
+    createTicket,
+    getTickets,
+    processTicket,
+} from '../../api/portalApi';
+import type { TicketItem } from '../../api/portalApi';
 
 const { TextArea } = Input;
 const { Title } = Typography;
-
-interface TicketLog {
-    time: string;
-    content: string;
-}
-
-interface TicketItem {
-    id: string;
-    title: string;
-    type: string;
-    priority: string;
-    creator: string;
-    phone: string;
-    description: string;
-    status: string;
-    createTime: string;
-    logs: TicketLog[];
-}
-
-const initData: TicketItem[] = [
-    {
-        id: 'GD202605280001',
-        title: 'OA系统无法登录',
-        type: '系统异常',
-        priority: '高',
-        creator: '张三',
-        phone: '138****8888',
-        description: '用户反馈OA系统提示500错误',
-        status: '待处理',
-        createTime: '2026-05-28 09:30:12',
-        logs: [
-            {
-                time: '2026-05-28 09:30:12',
-                content: '张三 提交工单',
-            },
-        ],
-    },
-    {
-        id: 'GD202605280002',
-        title: '打印机无法连接',
-        type: '办公设备',
-        priority: '中',
-        creator: '李四',
-        phone: '139****6666',
-        description: '打印机无法被电脑识别',
-        status: '处理中',
-        createTime: '2026-05-28 10:15:21',
-        logs: [
-            {
-                time: '2026-05-28 10:15:21',
-                content: '李四 提交工单',
-            },
-            {
-                time: '2026-05-28 10:20:11',
-                content: '运维人员已接单处理中',
-            },
-        ],
-    },
-];
 
 const getStatusTag = (status: string) => {
     switch (status) {
@@ -106,7 +54,7 @@ const getStatusTag = (status: string) => {
 };
 
 const TicketSystem: React.FC = () => {
-    const [tickets, setTickets] = useState<TicketItem[]>(initData);
+    const [tickets, setTickets] = useState<TicketItem[]>([]);
 
     const [createVisible, setCreateVisible] = useState(false);
     const [handleVisible, setHandleVisible] = useState(false);
@@ -118,6 +66,12 @@ const TicketSystem: React.FC = () => {
     const [createForm] = Form.useForm();
     const [handleForm] = Form.useForm();
 
+    useEffect(() => {
+        getTickets()
+            .then(setTickets)
+            .catch((error: Error) => message.error(error.message));
+    }, []);
+
     const statistics = useMemo(() => {
         return {
             total: tickets.length,
@@ -127,25 +81,10 @@ const TicketSystem: React.FC = () => {
         };
     }, [tickets]);
 
-    const generateTicketId = () => {
-        return `GD${Date.now()}`;
-    };
-
     const handleCreate = async () => {
         const values = await createForm.validateFields();
 
-        const newTicket: TicketItem = {
-            id: generateTicketId(),
-            ...values,
-            status: '待处理',
-            createTime: new Date().toLocaleString(),
-            logs: [
-                {
-                    time: new Date().toLocaleString(),
-                    content: `${values.creator} 提交工单`,
-                },
-            ],
-        };
+        const newTicket = await createTicket(values);
 
         setTickets([newTicket, ...tickets]);
 
@@ -166,23 +105,9 @@ const TicketSystem: React.FC = () => {
 
         if (!currentTicket) return;
 
-        const updated = tickets.map((item) => {
-            if (item.id === currentTicket.id) {
-                return {
-                    ...item,
-                    status: values.action,
-                    logs: [
-                        ...item.logs,
-                        {
-                            time: new Date().toLocaleString(),
-                            content: values.remark,
-                        },
-                    ],
-                };
-            }
+        const processedTicket = await processTicket(currentTicket.id, values);
 
-            return item;
-        });
+        const updated = tickets.map((item) => item.id === processedTicket.id ? processedTicket : item);
 
         setTickets(updated);
 
@@ -256,27 +181,14 @@ const TicketSystem: React.FC = () => {
                         icon={<CheckCircleOutlined />}
                         success-color="green"
                         onClick={() => {
-                            const updated = tickets.map((item) => {
-                                if (item.id === record.id) {
-                                    return {
-                                        ...item,
-                                        status: '已完成',
-                                        logs: [
-                                            ...item.logs,
-                                            {
-                                                time: new Date().toLocaleString(),
-                                                content: '工单已完结',
-                                            },
-                                        ],
-                                    };
-                                }
-
-                                return item;
-                            });
-
-                            setTickets(updated);
-
-                            message.success('工单已完结');
+                            completeTicket(record.id)
+                                .then((completedTicket) => {
+                                    setTickets(tickets.map((item) =>
+                                        item.id === completedTicket.id ? completedTicket : item
+                                    ));
+                                    message.success('工单已完结');
+                                })
+                                .catch((error: Error) => message.error(error.message));
                         }}
                     >
                         完结
